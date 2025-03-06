@@ -15,5 +15,5 @@ X O X O X O X O X O
 """
 
 # Utilizzo di un costrutto iterativo per produrre l'output richiesto
-for _ in range(10):
+for indice_riga in range(10):
     print("X O " * 5)

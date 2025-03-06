@@ -13,12 +13,9 @@ Modificare impostazioni console Editor -> General -> Console -> Override console
 buffer 2048
 
 """
-
-secondi = 0
-minuti = 0
-ore = 0
-
+from time import sleep
 for ore in range(24):
     for minuti in range(60):
         for secondi in range(60):
             print(f'{ore}:{minuti}:{secondi}')
+            sleep(1)
