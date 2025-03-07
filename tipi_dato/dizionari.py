@@ -27,3 +27,9 @@ print(dict_due)
 print(dict_due.pop(4))
 print(dict_due)
 print(dict_due.pop(4, 'elemento non presente'))
+
+# ispezione dizionari
+print(len(dict_due))
+print(dict_due.items()) # lista di tuple contenenti chiave e valore
+print(dict_due.keys()) # lista delle chiavi
+print(dict_due.values()) # lista dei valori
