@@ -41,3 +41,37 @@ class ContoCorrente:
     # metodo di istanza per rappresentazione testuale
     def __repr__(self):
         return f"Benvenuto/a {self.intestatario}\nL'IBAN del tuo nuovo conto è {self.iban}\nAttualmente il tuo saldo è pari a {self.saldo} €"
+
+def pannello_comandi():
+    scelta_utente = input(
+        "***** La Tua Banca *****\n"
+        "Digita 1 per aprire il tuo conto\n"
+        "Digita 0 per terminare\n")
+    match scelta_utente:
+        case '1':
+            apertura_conto()
+        case _:
+            print("Arrivederci... Alla prossima.")
+            exit(1)
+
+def apertura_conto():
+    nome_cognome = input("Grazie di aver scelto di aprire un conto!\nInserisca nome e cognome: ")
+    conto = ContoCorrente(nome_cognome)
+    print(conto)
+    scelta_utente = input('Desideri effettuare delle operazioni? (SI o NO) ')
+    if scelta_utente.upper() == "SI":
+        registrazione_operazione(conto)
+    else:
+        print(f'Arrivederci {conto.intestatario}... Alla prossima')
+
+# funzione per gestire registrazione operazioni
+def registrazione_operazione(conto):
+    while True:
+        importo = input('Digita importo operazione (oppure 0 per terminare): ')
+        if importo != "0":
+            print(conto.set_saldo(importo))
+        else:
+            print(f"Arrivederci {conto.intestatario}... Alla prossima")
+            exit(2)
+
+pannello_comandi()
