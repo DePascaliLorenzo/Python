@@ -18,4 +18,4 @@ class Persona:
 
     # riscrittura completa metodo di rappresentazione testuale di object
     def __repr__(self):
-        return f'{self.nome} {self.cognome} {self.eta}'
+        return f'{self.nome} {self.cognome} - {self.eta} anni'
