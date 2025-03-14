@@ -1,6 +1,6 @@
 def divisione(a, b):
     try:
-        print(int(a) / int(b))
+        print(int(a) / int(b), type(a), type(b))
     except ValueError as v:
         print(v)
     except ZeroDivisionError as z:
@@ -24,8 +24,16 @@ def divisione_tre(a, b):
 
 print('AVVIO PROGRAMMA')
 
+print('')
+
 divisione('5','0')
-divisione_due("ciao",'2')
+
+print('')
+
+divisione_due("3",'3')
+
+print('')
+
 divisione_tre('5','2')
 
 print('FINE PROGRAMMA')

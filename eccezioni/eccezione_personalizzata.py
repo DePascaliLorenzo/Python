@@ -9,7 +9,6 @@ class MiaEccezione(Exception):
     def __str__(self):
         return self.messaggio
 
-
 # acquisizione input utente
 input_utente = input('Digita codice prodotto preceduto da PROD- : ')
 
