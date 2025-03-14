@@ -8,3 +8,6 @@ class Noleggio:
         self.cliente = cliente
         self.veicolo = veicolo
         self.importo_finale = veicolo.tariffa_giornaliera * (self.data_fine-self.data_inizio).days
+
+    def __repr__(self):
+        return f'Noleggio - Inizio: {self.data_inizio.strftime('%d-%m-%Y')} - Fine: {self.data_fine.strftime('%d-%m-%Y')}\n{self.cliente}\n{self.veicolo}\nImporto totale: {self.importo_finale} €'

@@ -3,7 +3,7 @@ from esercizi_04.model.cliente import Cliente
 from esercizi_04.model.furgone import Furgone
 from esercizi_04.model.noleggio import Noleggio
 
-#GRUPPO 2 ANA MARIA, FUIDO, LUCA, FRA
+#GRUPPO 2 ANA MARIA, GUIDO, LUCA, FRA
 
 veicoli = []
 clienti = []
@@ -23,21 +23,21 @@ def registra_cliente(nome, cognome, numero_patente):
 
 def registra_noleggio():
 
-    scelta = input('Digita A per registrare una auto.\nDigita F per registrare un furgone.\nDigita C per registrare un cliente.\nDigita N per effettuare un noleggio\nDigita L per visualizzare le liste.')
+    scelta = input('\nDigita A per registrare una auto.\nDigita F per registrare un furgone.\nDigita C per registrare un cliente.\nDigita N per effettuare un noleggio.\nDigita L per visualizzare le liste.\n')
     match scelta:
         case "A" | "a":
             marca = input("Inserisci la marca dell'auto: ")
             modello = input("Inserisci il modello dell'auto: ")
             numero_targa = input("Inserisci il numero di targa: ")
-            tariffa_giornaliera = input("Inserisce la tariffa giornaliera: ")
+            tariffa_giornaliera = int(input("Inserisce la tariffa giornaliera: "))
             numero_porte = input("Inserisci il numero di porte: ")
-            tipologia_cambio = input("Inserisci il tipo di cambio:")
+            tipologia_cambio = input("Inserisci il tipo di cambio: ")
             registra_autovettura(marca, modello, numero_targa, tariffa_giornaliera, numero_porte, tipologia_cambio)
         case "F" | "f":
             marca = input("Inserisci la marca del furgone: ")
             modello = input("Inserisci il modello del furgone: ")
             numero_targa = input("Inserisci il numero di targa: ")
-            tariffa_giornaliera = input("Inserisce la tariffa giornaliera: ")
+            tariffa_giornaliera = int(input("Inserisce la tariffa giornaliera: "))
             portata = input("Inserisci la portata in KG: ")
             dimensioni = input("Inserisci le dimensioni in cm: ")
             registra_furgone(marca, modello, numero_targa, tariffa_giornaliera, portata, dimensioni)
@@ -49,10 +49,13 @@ def registra_noleggio():
         case "N" | "n":
             data_inizio = input("Inserisci data di inizio del noleggio in formato gg-mm-aaaa: ")
             data_fine = input("Inserisci data di fine del noleggio in formato gg-mm-aaaa: ")
-
+            nuovo_noleggio = Noleggio(data_inizio,data_fine,clienti[0],veicoli[0])
+            noleggi.append(nuovo_noleggio)
         case "L" | "l":
             print(veicoli)
+            print('')
             print(clienti)
+            print('')
             print(noleggi)
         case _:
             print('errore')
