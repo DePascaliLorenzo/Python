@@ -14,3 +14,7 @@ class Prodotto:
         return (f'Id Prodotto: {self.id} - Tipologia: {self.tipologia}'
                 f'\nMarca: {self.marca} - Modello: {self.modello}'
                 f'\nPrezzo: {self.prezzo}€\n---------------------------------------------------------')
+
+    # metodo di rappresentazione in formato lista
+    def to_list(self):
+        return[self.id,self.tipologia,self.marca,self.marca,self.prezzo]
