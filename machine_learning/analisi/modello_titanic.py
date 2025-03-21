@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-
 from modello_base import  ModelloBase
 import pandas as pd
 from scipy.stats import chi2_contingency,contingency,spearmanr
@@ -16,7 +15,6 @@ class ModelloTitanic(ModelloBase):
         self.grafici_contingenza()
         self.grafico_spearman()
         self.grafico_ripartizione()
-
 
     # metodo di istanza per sistemazione dataframe
     def sistemazione_dataframe(self):

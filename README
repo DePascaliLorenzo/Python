@@ -1,0 +1,4 @@
+Librerie installate:
+- Pandas (creazione e gestione di dataframe) -> pip install pandas
+- Matplotlib (creazione di grafici di base) -> pib install matplotlib
+- Scipy (calcoli scientifici e statistici) -> pip install scipy
