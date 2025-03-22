@@ -1,16 +1,26 @@
-# Analizza il dataset "people.csv" allegato per individuare
-# la correlazione più significativa tra le variabili presenti e la variabile target.
-# L'obiettivo finale consiste nell'ottenimento dei dati di correlazione e del relativo grafico.
+"""
+Analizza il dataset "people.csv" allegato per individuare
+la correlazione più significativa tra le variabili presenti e la variabile target.
+L'obiettivo finale consiste nell'ottenimento dei dati di correlazione e del relativo grafico.
+"""
+
 from machine_learning.analisi.modello_base import ModelloBase
 import pandas as pd
 from scipy.stats import chi2_contingency,contingency,spearmanr
 import matplotlib.pyplot as plt
 
 _DATASET_PATH = '06. people.csv'
+_DATASET_PATH_FIXED = '06.people_sistemato.csv'
 label_old = ['age','workclass','fnlwgt','education','education-num','marital-status','occupation','relationship','race','sex','capital-gain','capital-loss','hours-per-week','native-country','target']
 label_new = ['Età', 'Categoria di Lavoro','Peso Campionario','Educazione','Anni di Studio','Stato Coniugale','Mansione','Relazione','Razza','Sesso','Entrate','Uscite','Ore Settimanali','Paese d\'Origine','Obiettivo']
 drop_list_old = [label_old[2], label_old[4], label_old[14]]
 drop_list_new = [label_new[2], label_new[4], label_new[14]]
+native_countries_list = ['?', 'United-States', 'Cuba', 'Jamaica', 'India', 'Mexico', 'South', 'Puerto-Rico', 'Honduras',
+                         'England', 'Canada', 'Germany', 'Iran', 'Philippines', 'Italy', 'Poland', 'Columbia', 'Cambodia',
+                         'Thailand', 'Ecuador', 'Laos', 'Taiwan', 'Haiti', 'Portugal', 'Dominican-Republic', 'El-Salvador',
+                         'France', 'Guatemala', 'China', 'Japan', 'Yugoslavia', 'Peru', 'Outlying-US(Guam-USVI-etc)',
+                         'Scotland', 'Trinadad&Tobago', 'Greece', 'Nicaragua', 'Vietnam', 'Hong', 'Ireland', 'Hungary',
+                         'Holand-Netherlands']
 
 class ModelloReddito(ModelloBase):
 
@@ -44,6 +54,13 @@ class ModelloReddito(ModelloBase):
         })
 
         return df_sistemato
+        """
+        df_sistemato[label_new[13]] = df_sistemato[label_new[13]].map({'?':0, 'United-States':1, 'Cuba':2, 'Jamaica':3, 'India':4, 'Mexico':5, 'South':6, 'Puerto-Rico':7, 'Honduras':8, 'England':9,
+'Canada':10, 'Germany':11, 'Iran':12, 'Philippines':13, 'Italy':14, 'Poland':15, 'Columbia':16, 'Cambodia':17, 'Thailand':18, 'Ecuador':19,
+'Laos':20, 'Taiwan':21, 'Haiti':22, 'Portugal':23, 'Dominican-Republic':24, 'El-Salvador':25, 'France':26, 'Guatemala':27, 'China':28, 'Japan':29,
+'Yugoslavia':30, 'Peru':31, 'Outlying-US(Guam-USVI-etc)':32, 'Scotland':33, 'Trinadad&Tobago':34, 'Greece':35, 'Nicaragua':36, 'Vietnam':37, 'Hong':38,
+'Ireland':39, 'Hungary':40, 'Holand-Netherlands':41})
+        """
 
     def tabella_contingenza(self,column, target):
         tabella_contingenza = pd.crosstab(self.dataframe[column], self.dataframe[target])
@@ -68,4 +85,5 @@ class ModelloReddito(ModelloBase):
 
 modello = ModelloReddito(_DATASET_PATH)
 modello.analisi_generali(modello.dataframe_sistemato)
+modello.dataframe_sistemato.to_csv(_DATASET_PATH_FIXED, index = False)
 modello.analisi_valori_univoci(modello.dataframe_sistemato)
