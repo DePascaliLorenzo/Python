@@ -49,11 +49,11 @@ class ModelloTitanic(ModelloBase):
         # generazione e stampa tabella di contingenza
         tabella_contingenza = pd.crosstab(self.dataframe[column], self.dataframe[target])
 
-        tabella_contingenza.columns = tabella_contingenza.columns.map({0:'Deceduti',1:'Sopravvissuti'})
+        tabella_contingenza.columns = tabella_contingenza.columns.map({'0':'Deceduti','1':'Sopravvissuti'})
         if column == 'Classe Passeggero':
-            tabella_contingenza.columns = tabella_contingenza.columns.map({1: '1^ Classe', 2: '2^ Classe', 3: '3^ Classe'})
+            tabella_contingenza.columns = tabella_contingenza.columns.map({'1': '1^ Classe', '2': '2^ Classe', '3': '3^ Classe'})
         else:
-            tabella_contingenza.columns = tabella_contingenza.columns.map({0:'Femmine',1:'Maschi'})
+            tabella_contingenza.columns = tabella_contingenza.columns.map({'0':'Femmine','1':'Maschi'})
         print(f'TABELLA DI CONTINGENZA {column} - {target}: ', tabella_contingenza, sep='\n')
         # test chi quadro e stampa esito
         chi2, p, dof, expected = chi2_contingency(tabella_contingenza)
