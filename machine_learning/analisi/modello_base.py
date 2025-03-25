@@ -17,7 +17,7 @@ class ModelloBase(ABC):
     def analisi_valori_univoci(df, variabili_da_droppare = None):
         print('***** VALORI UNIVOCI DATAFRAME *****')
         if variabili_da_droppare:
-            df.drop(variabili_da_droppare, axis=1)
+            df = df.drop(variabili_da_droppare, axis=1)
         for col in df.columns:
             print(f'In colonna {col} abbiamo: {df[col].nunique()} valori univoci')
             for value in df[col].unique():
