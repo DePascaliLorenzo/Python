@@ -3,3 +3,5 @@ Librerie installate:
 - Matplotlib (creazione di grafici di base) -> pib install matplotlib
 - Scipy (calcoli scientifici e statistici) -> pip install scipy
 - Scikit Learn (preprocessing e modelli ML) -> pip install scikit-learn
+- Seaborn (funzionalità grafiche e dataset -> pip install seaborn
+- Kneed (individuazione numero cluster) -> pip install kneed
