@@ -56,11 +56,12 @@ class ModelloAlcolici(ModelloBase):
         print(f'Il p-value risultante da test del chi-quadro tra {column} - DATA_TYPE è {format(p, '.53f')}')
 
         # calcolo dell'indice di Cramer e stampa esito
-        totale_osservazioni = tabella_contingenza.sum().sum()
+        totale_osservazioni = tabella_contingenza.sum().sum() # .sum().sum() somma tutti i values sia per righe che per colonne
+        # in questo caso, è la somma di tutti gli OBS_VALUE
+        print(totale_osservazioni, type(totale_osservazioni))
         dimensione_minima = min(tabella_contingenza.shape) - 1 # valore minimo in una tupla righe-colonne tabella contingenza
         cramer = np.sqrt(chi2 / (totale_osservazioni * dimensione_minima))
         print(f'L\'indice di Cramer calcolato sulla tabella di contingenza {column} - DATA_TYPE è: ', cramer)
-
 
 # utilizzo modello
 modello = ModelloAlcolici('../dataset/data_08.csv')
