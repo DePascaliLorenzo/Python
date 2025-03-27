@@ -2,6 +2,7 @@ from modello_base import ModelloBase
 import pandas as pd
 from scipy.stats import chi2_contingency
 import numpy as np
+import matplotlib.pyplot as plt
 
 class ModelloAlcolici(ModelloBase):
 
@@ -61,7 +62,19 @@ class ModelloAlcolici(ModelloBase):
         print(totale_osservazioni, type(totale_osservazioni))
         dimensione_minima = min(tabella_contingenza.shape) - 1 # valore minimo in una tupla righe-colonne tabella contingenza
         cramer = np.sqrt(chi2 / (totale_osservazioni * dimensione_minima))
-        print(f'L\'indice di Cramer calcolato sulla tabella di contingenza {column} - DATA_TYPE è: ', cramer)
+        print(f'L\'indice di Cramer calcolato sulla tabella di contingenza {column} - DATA_TYPE è: ', cramer) # invocazione metodo per generazione grafico
+        self.grafico_contingenza(tabella_contingenza, "Fascia Età" if column == "AGE" else "Genere")
+
+    # metodo per generazione grafici di distribuzione a barre
+    def grafico_contingenza(self, tabella_contingenza, colonna):
+        tabella_contingenza.plot(kind="bar", stacked=True, color=["yellow", "red", "green"])
+        plt.title(f"Frequenza di Consumo per {colonna}")
+        plt.xlabel(colonna)
+        plt.ylabel("Persone")
+        plt.legend()
+        plt.tick_params(rotation=45, axis="x")
+        plt.tight_layout()
+        plt.show()
 
 # utilizzo modello
 modello = ModelloAlcolici('../dataset/data_08.csv')
