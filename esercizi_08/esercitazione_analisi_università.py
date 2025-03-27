@@ -7,13 +7,10 @@ le facoltà universitarie e il genere dei docenti (uomo, donna)
 Si richiede la produzione in output dei risultati di correlazione e dei relativi grafici esplorativi.
 """
 from scipy.stats import chi2_contingency, contingency
-
 from machine_learning.analisi.modello_base import ModelloBase
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
-import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
+
 
 class ModelloDocenti(ModelloBase):
 
