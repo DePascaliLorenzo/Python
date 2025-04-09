@@ -1,7 +1,10 @@
 import tkinter as tk
+
+import interfacce_grafiche_utente.rubrica.gui.finestra_due
 from interfacce_grafiche_utente.rubrica.repository.contatto_repository import *
 from tkinter import ttk
 from tkinter.messagebox import askyesno
+from interfacce_grafiche_utente.rubrica.gui.finestra_due import FinestraDue
 
 class Finestra(tk.Tk):
 
@@ -66,7 +69,7 @@ class Finestra(tk.Tk):
         return barra
 
     def aggiunta_contatto(self):
-        pass
+        FinestraDue(self)
 
     def eliminazione_contatto(self):
         print(self.tabella.selection())
@@ -77,4 +80,6 @@ class Finestra(tk.Tk):
                                 message=f'Sei sicuro di eliminare {riga_selezionata[1]}?',
                                 parent=self)
             if conferma:
-                print('Contatto Cancellato')
+                contatto = Contatto(riga_selezionata[0], riga_selezionata[1], riga_selezionata[2])
+                if eliminazione_contatto_repo(contatto):
+                    self.popolamento_tabella()

@@ -13,3 +13,27 @@ def elenco_contatti_repo():
     except Exception as e:
         print(e)
         return None
+
+# funzione ausiliaria per scrivere l'intera lista contatti nel file json
+def _riscrittura_file(lista_contatti):
+    try:
+        with open('rubrica.json', 'w') as file:
+            lista_contatti = [contatto.serializzazione() for contatto in lista_contatti]
+            json.dump(lista_contatti, file, indent=4)
+            return True
+    except Exception as e:
+        print(e)
+        return False
+
+# funzione per aggiungere un contatto al file json
+def aggiunta_contatto_repo(contatto):
+    lista_contatti = elenco_contatti_repo()
+    lista_contatti.append(contatto)
+    return _riscrittura_file(lista_contatti)
+
+# funzione per eliminare un contatto dal file json
+def eliminazione_contatto_repo(contatto):
+    lista_contatti = elenco_contatti_repo()
+    if contatto in lista_contatti:
+        lista_contatti.remove(contatto)
+        return _riscrittura_file(lista_contatti)
