@@ -6,3 +6,4 @@ Librerie installate:
 - Seaborn (funzionalità grafiche e dataset -> pip install seaborn
 - Kneed (individuazione numero cluster) -> pip install kneed
 - Pycountry (informazioni globali paesi) -> pip install pycountry
+- PyMySQL (connettore per database MySQL) -> pip install pymysql
