@@ -1,5 +1,8 @@
 import pymysql
 
+from interazioni_sql.sql_01.persona import Persona
+
+
 # Ogni volta che l'app deve interagire con il database, deve effettuare una connessione
 # Aprire una connessione richiede:
 # Localizzazione del server MySQL + Credenziali + Database di riferimento
@@ -47,7 +50,7 @@ def dati_persona_repo(id):
         return None
 
 # funzione per ottenere un oggetto Persona dal database (ricerca per id)
-def elenco_persone_repo(id):
+def elenco_persone_repo():
     try:
         with _get_connection() as connection:
             with connection.cursor() as cursor:
