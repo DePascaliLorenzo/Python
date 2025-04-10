@@ -64,3 +64,46 @@ def elenco_persone_repo():
     except Exception as e:
         print(e)
         return None
+
+
+# funzione per aggiornamento dati di un oggetto Persona nel db
+def aggiornamento_persona_repo(persona):
+    try:
+        with _get_connection() as connection:
+            with connection.cursor() as cursor:
+                sql = 'UPDATE persone SET nome=%s, cognome=%s, eta=%s WHERE id=%s'
+                valori = persona.nome, persona.cognome, persona.eta, persona.id
+                cursor.execute(sql, valori)
+                connection.commit()
+                return cursor.rowcount
+    except Exception as e:
+        print(e)
+        return None
+
+# funzione per eliminazione di un oggetto Persona nel db (identificazione tramite chiave primaria)
+def eliminazione_persona_repo(id):
+    try:
+        with _get_connection() as connection:
+            with connection.cursor() as cursor:
+                sql = 'DELETE FROM persone WHERE id=%s'
+                valori = id
+                cursor.execute(sql, valori)
+                connection.commit()
+                return cursor.rowcount
+    except Exception as e:
+        print(e)
+        return None
+
+# funzione per ottenere una lista di oggettiPersona dal database (ricerca su carattere cognome)
+def elenco_persone_like_cognome_repo(sequenza_cercata):
+    try:
+        with _get_connection() as connection:
+            with connection.cursor() as cursor:
+                sql = 'SELECT * FROM persone WHERE cognome LIKE &s'
+                valori = f'%{sequenza_cercata}%', # la virgola è essenziale per rendere valori una tupla
+                cursor.execute(sql)
+                risultato = cursor.fetchall() # tupla con dati record in ordine colonne e null se non trova nulla
+                return [Persona(id, nome, cognome, eta) for id, nome, cognome, eta in risultato]
+    except Exception as e:
+        print(e)
+        return None
