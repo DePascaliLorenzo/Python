@@ -29,4 +29,4 @@ def test_elenco_persone():
 # invocazione funzioni
 # test_registrazione()
 # test_dati_persona()
-test_elenco_persone()
+# test_elenco_persone()
