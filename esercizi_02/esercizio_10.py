@@ -1,5 +1,5 @@
 """
-I. Crea uno script nominandolo “esercizio_10”
+I. Crea uno script nominandolo “esercizi_10”
 II. Implementa un algoritmo che permetta di rappresentare i primi 20 numeri della sequenza di Fibonacci
 OUTPUT Stampa in console la sequenza su un'unica riga
 """
